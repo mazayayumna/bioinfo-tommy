@@ -1,2 +1,2 @@
 # bioinfo-tommy
-biocomp project
+biocomp project to refresh my bioinformatics knowledge
