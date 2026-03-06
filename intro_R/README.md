@@ -23,3 +23,24 @@ a graphing template for ggplot
 ggplot(data = <DATA>) + 
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
 ```
+
+### a e s t h e t i c mapping
+visual property of the objects in your plot. Aesthetics include things like the size, the shape, or the color of your points
+```
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+```
+
+### facets
+split plot into subplots that each display one subset of the data. Use ~ as formula and followed by a var name.
+```
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_wrap(~ class, nrow = 2)
+```
+for two variables
+```
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_grid(drv ~ cyl)
+```
