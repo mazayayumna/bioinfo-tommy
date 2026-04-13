@@ -127,3 +127,36 @@ ggplot(data = diamonds) +
   )
 ```
 There are two types of bar charts: geom_bar() and geom_col(). geom_bar() makes the height of the bar proportional to the number of cases in each group. If you want the heights of the bars to represent values in the data, use geom_col() instead.
+
+### position adjustment
+colour a barchart, one outerline, one filled
+```
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, colour = cut))
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = cut))
+```
+stack the barchart (clarity), alpha for small transparent, and no fill full transparent
+```
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity))
+ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + 
+  geom_bar(alpha = 1/5, position = "identity")
+ggplot(data = diamonds, mapping = aes(x = cut, colour = clarity)) + 
+  geom_bar(fill = NA, position = "identity")
+```
+make the stacked bar chart the same height
+```
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
+```
+make overlapping obj beside one another, so easier to compare indv values
+```
+ggplot(data = diamonds) + 
+  geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge")
+```
+adding randomness to scatterplot, since plot only display 126/234 points in dataset (jitter)
+```
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
+```
