@@ -28,3 +28,28 @@ df <- tibble(x = c(1, NA, 3)) #c is concatenate val to a tibble
 filter(df, x > 1) #3
 filter(df, is.na(x) | x > 1) #NA,3
 ```
+
+## Arrange rows - arrange()
+```
+arrange(flights, year, month, day) #sort rows based on yymmdd
+arrange(flights, desc(dep_delay)) #sort based dep_delay in desc order
+```
+missing values ALWAYS in the end
+```
+df <- tibble(x = c(5, 2, NA))
+arrange(df, x) #2,5,NA
+arrange(df, desc(x)) #5,2,NA
+```
+
+## Select columns - select()
+```
+select(flights, year, month, day) #select columns by name
+select(flights, year:day) #select all cols between year and day
+select(flights, -(year:day)) #select all cols except between year and day
+```
+other helpful function: starts_with(), ends_with(), contains(),
+matches(), num_range(), and rename()
+```
+rename(flights, tail_num = tailnum) #rename col name tailnum
+select(flights, time_hour, air_time, everything()) #move column to the front, then state all the rest of cols with everything()
+```
